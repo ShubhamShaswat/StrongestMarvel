@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang = "en">
+	
+	<head>
+		<title> HOME</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        
+	</head>
+    
+    <style>
+        .container_img:hover .overlay {
+           opacity: 1;
+            
+        }
+        
+        .overlay{
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              height: 100%;
+              width: 100%;
+              opacity: 0;
+              transition: .5s ease;
+            background-color: cornflowerblue;
+              
+
+            
+        }
+        
+        .text{
+            
+        
+            color: blue;
+              font-size: 20px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              
+              text-align: center;
+            
+            
+        }
+        
+    </style>
+    
+    <script>
+        
+        var characters=['thanos','iron_man','thor','scarlet_witch','hawkeye','red_skull','spiderman','winter_soldier']
+        var played = []
+        
+        var newImage1 = new Image();
+        newImage1.src = "pics/scarlet_witch.jpg";
+        
+        var newImage2 = new Image();
+        newImage2.src = "pics/iron_man.jpg";
+        
+
+        function updateImage1()
+        {
+        var index =Math.floor(Math.random() * 8) + 0
+        if(newImage1.complete) {
+            document.getElementById("img1").src = newImage1.src;
+            newImage1 = new Image();
+            newImage1.src = "pics/"+characters[index]+".jpg";
+            played.push(index);
+        }
+
+            
+        }
+        
+    
+        function updateImage2()
+        {
+        var index =Math.floor(Math.random() * 4) + 0
+        if(newImage2.complete) {
+            document.getElementById("img2").src = newImage2.src;
+            newImage2 = new Image();
+            if(!played.includes(index))
+            {    
+                newImage2.src = "pics/"+characters[index]+".jpg";
+                played.push(index);
+            }
+            else{
+                updateImage2();
+            }
+        }
+
+            
+        }
+        
+        
+        
+        
+        
+        
+
+    </script>
+
+		
+	<body>
+        
+        <div class='w3-row' style=" text-align: center">
+            <h1>Who is Strongest Marvel Characters</h1>
+        </div>
+        
+        <div class='w3-row' style=" text-align: center">
+            <h3>Who will win?</h3>
+        </div>
+        
+        <div class='w3-row'>
+            <div class='w3-col w3-container m3 l3' style="border: 2px solid black; height: 300px;">
+                Share 
+            </div>
+            <div class='w3-col w3-container m3 l3' style="border: 2px solid black;height: 300px">
+                <div class='container' style="border: 2px solid white; height: 100%;padding: 20px">
+                    <div class='container' style="text-align: center ;border: 2px solid white;height: 100%;">
+                        <img id="img1" onclick="updateImage1()"style="height: 100%;width: 80%">
+
+                    </div>    
+                    
+                </div>
+                
+            </div>
+            
+            <div class='w3-col w3-container m3 l3' style="border: 2px solid black; height: 300px">
+                <div class='container' style="border: 2px solid white; height: 100%; text-align: center;padding: 20px">
+                    <div class='container_img' style="text-align: center ;border: 2px solid white;height: 100%; ">
+                        <img  id='img2' style="height: 100%;width: 80% " onclick="updateImage2()">
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class='w3-col w3-container m3 l3' style="border: 2px solid black;height: 300px">
+                Leader Board
+            </div>
+            
+        </div>
+        
+        
+
+	
+    </body>
+</html>
